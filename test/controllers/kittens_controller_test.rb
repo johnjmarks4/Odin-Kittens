@@ -11,8 +11,8 @@ class KittensControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get shoe" do
-    get kittens_shoe_url
+  test "should get show" do
+    get kittens_show_url
     assert_response :success
   end
 

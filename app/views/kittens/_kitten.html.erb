@@ -1,0 +1,9 @@
+<% stylesheet_link_tag "kitten" %>
+
+<li>
+  <%= puts kitten.id %>
+  <%= form_tag(kittens_show_path, method: :post) do %>
+    <%= hidden_field_tag(:kitten_id, kitten.id) %>
+    <%= button_tag "#{kitten.name}" %>
+  <% end %>
+</li>
