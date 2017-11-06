@@ -1,0 +1,14 @@
+<% if !@kitten_id.nil? %>
+  <% path = kittens_update_path %>
+<% else %>
+  <% path = kittens_create_path %>
+<% end %>
+
+<%= form_for @kitten, url: '/kittens' do |f| %>
+  Name: <%= f.text_field :name %><br>
+  Age: <%= f.number_field :age %><br>
+  Cuteness <%= f.number_field :cuteness %><br>
+  Softness <%= f.number_field :softness %><br>
+  <%= hidden_field_tag :kitten_id, @kitten.id %>
+  <%= f.submit "Submit" %>
+<% end %>
