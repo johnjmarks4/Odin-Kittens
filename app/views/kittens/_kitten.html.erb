@@ -1,8 +1,12 @@
 <% stylesheet_link_tag "kitten" %>
 
 <li>
+  
   <%= form_tag(kittens_show_path, method: :post) do %>
-    <%= hidden_field_tag(:kitten_id, kitten.id) %>
-    <%= button_tag "#{kitten.name}" %>
-  <% end %>
+    <div id="kitten">
+      <%= hidden_field_tag(:kitten_id, kitten.id) %>
+      <%= button_tag "#{kitten.name}" %>
+    <% end %>
+    <%= link_to "delete", kittens_destroy_path(kitten), method: :post, data: { confirm: "Are you sure?" } %>
+  </div>
 </li>

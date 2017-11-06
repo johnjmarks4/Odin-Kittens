@@ -1,7 +1,13 @@
-Name: <%= @kitten.name %><br>
-Age: <%= @kitten.age %><br>
-Cuteness: <%= @kitten.cuteness %><br>
-Softness: <%= @kitten.softness %><br><br>
+<%= render 'shared/flash_messages' if !flash.empty? %>
 
-<%= link_to "edit", kittens_edit_path(@kitten) %><br>
-<%= link_to "delete", kittens_destroy_path(@kitten), method: :post, data: { confirm: 'Are you sure?' } %>
+<% if !@kitten.nil? %>
+  Name: <%= @kitten.name %><br>
+  Age: <%= @kitten.age %><br>
+  Cuteness: <%= @kitten.cuteness %><br>
+  Softness: <%= @kitten.softness %><br><br>
+
+  <%= link_to "edit", kittens_edit_path(@kitten) %><br>
+  <%= link_to "delete", kittens_destroy_path(@kitten), method: :post, data: { confirm: 'Are you sure?' } %>
+<% else %>
+  <p>No kittens to display</p>
+<% end %>

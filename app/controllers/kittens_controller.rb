@@ -9,26 +9,24 @@ class KittensController < ApplicationController
   def create
     @kitten = Kitten.new(kitten_params)
     if @kitten.save
+      flash[:success] = "kitten creation successful"
       redirect_to kittens_show_path(@kitten, kitten_id: @kitten.id)
+    else
+      flash[:failure] = "form filled out incorrectly"
+      render kittens_create_path
     end
   end
 
   def show
     @kitten = Kitten.find_by(id: params[:kitten_id].to_i)
-    if @kitten.nil?
-      render html: '<p>No kittens to display</p>'.html_safe #use flash instead?
-    end
   end
 
   def index
     @kittens = Kitten.all
-    if @kittens.empty?
-      render html: '<p>No kittens to display</p>'.html_safe #use flash instead?
-    end
   end
 
   def edit
-    @kitten = Kitten.find(params[:format]) #handle error?
+    @kitten = Kitten.find(params[:format])
   end
 
   def update
@@ -40,6 +38,7 @@ class KittensController < ApplicationController
   end
 
   def destroy
+    flash[:success] = "kitten destroyed"
     Kitten.find(params[:format]).destroy
     redirect_back(fallback_location: root_path)
   end

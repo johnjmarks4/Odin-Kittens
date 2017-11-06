@@ -7,3 +7,11 @@ button {
   border-bottom:1px solid #444;
   cursor: pointer;
 }
+
+#kitten {
+  display: inline;
+}
+
+#kitten a {
+  padding: 10px;
+}
