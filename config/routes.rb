@@ -19,5 +19,7 @@ Rails.application.routes.draw do
 
   patch 'kittens' => 'kittens#update'
 
+  get 'kittens/index'
+
   root "kittens#index"
 end
